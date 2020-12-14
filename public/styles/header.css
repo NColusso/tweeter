@@ -1,0 +1,12 @@
+header {
+  display: flex;
+  flex-direction: column;
+  background-color: #CC7722;
+  background-image: url("../images/asfalt-dark.png");
+  color: #ffffff;
+
+  justify-content: center;
+
+  align-items: center;
+  height: 400px;
+}
