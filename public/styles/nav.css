@@ -1,0 +1,14 @@
+nav {
+  color: #ffffff;
+  height: 120px;
+  background-color: #4056A1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 1.5em;
+}
+
+
+.logo {
+  font-family: bungee
+}
