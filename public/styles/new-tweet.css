@@ -1,0 +1,40 @@
+.new-tweet {
+  margin: 0 auto;
+  border: 5px;
+}
+
+
+#tweet-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+  background: none;
+  border: none;
+  width: 55vw;
+  height: 36px;
+  border-bottom: 5px solid gray
+}
+
+#tweet-text:focus {
+  outline: 0;
+}
+
+button {
+  font-family: bungee;
+  background-color: #4056A1;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+}
+
+.tweet-btn {
+  display: flex;
+  justify-content: space-between;
+}
+
+.new-tweet h2 {
+  text-align: center
+}
+
+

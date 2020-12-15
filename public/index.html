@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -39,8 +40,17 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
-      <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat nemo aspernatur nisi natus deserunt voluptate, iure enim officiis eum. Earum rem porro officia ullam, sint et sit inventore, aperiam animi veniam fugit! Enim explicabo, ut accusantium delectus voluptate tempora iure beatae, quibusdam ipsa distinctio, ratione ab neque voluptatum? Assumenda, consequuntur.</p>
+      <section class="new-tweet">
+        <h2>Compose Tweet</h2>
+        <form action="/tweets" method="POST">
+        <label for="tweet-text">What are you humming about?</label>
+        <textarea name="text" id="tweet-text"></textarea>
+        <div class ="tweet-btn">
+          <button type="submit">Tweet</button>
+          <output name="counter" class="counter" for="tweet-text">140</output>
+        </div>
+        </form>
+      </section>
     </main>
   </body>
 </html>
