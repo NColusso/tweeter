@@ -1,3 +1,20 @@
-article {
-  font: red;
+.show-tweets article header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.show-tweets article header div{
+  display: flex;
+  align-items: center;
+ 
+}
+
+.show-tweets article footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 5px solid gray;
+  margin-bottom: 5%;
+  padding-top: 1%;
 }
