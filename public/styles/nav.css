@@ -1,4 +1,7 @@
 nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
   color: #ffffff;
   height: 120px;
   background-color: #4056A1;
@@ -6,6 +9,7 @@ nav {
   justify-content: space-between;
   align-items: flex-end;
   padding: 1.5em;
+  margin-bottom: 120px;
 }
 
 
