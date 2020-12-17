@@ -38,9 +38,10 @@ const loadTweets = function() {
 }
 
 const renderTweets = function(tweets) {
+  // const orderedTweets = tweets.reverse()
   for (const tweet of tweets) {
     const $newTweet = createTweetElement(tweet)
-    $('#tweets-container').append($newTweet);
+    $('#tweets-container').prepend($newTweet);
   }
 }
 
@@ -55,12 +56,14 @@ const onSubmit = function(submit) {
   } else {
     $.ajax("/tweets", {method: "POST", data: tweet})
     .then((response) => {
-      // loadTweets()
+      $(".new-tweet form textarea").val("")
+      $(".counter").val(140)
     })
     .catch((error) => {
-      console.log("error")
+      alert("Error Submitting Tweet")
     })
   }
+  loadTweets()
 }
 
 
