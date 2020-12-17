@@ -3,13 +3,16 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+
+//  helper function to create "safe" text that will not alter app
 const escape = function(str) {
   let p = document.createElement('p')
   p.appendChild(document.createTextNode(str))
   return p.innerHTML
 }
 
-// alert message which will come up above compose tweet - takes in parameter of error message to show
+// alert message which will come up above compose tweet - parameter of error message
+// will go away once user starts typing again
 const alertMessage = function(error) {
   const div = document.createElement('div')
   const p = document.createElement('p');
@@ -57,6 +60,7 @@ const loadTweets = function() {
 }
 
 const renderTweets = function(tweets) {
+  // clear tweet container first to not have them show 2x
   $("#tweets-container").empty();
   for (const tweet of tweets) {
     const $newTweet = createTweetElement(tweet);
@@ -71,7 +75,7 @@ const onSubmit = function(submit) {
   if (!tweetContent) {
     alertMessage("⚠ Please write your tweet First ⚠")
   } else if (tweetContent.length > 140) {
-    alertMessage("⚠ Tweet too long! Please shorten to under 140 characters ⚠")
+    alertMessage("⚠ Please shorten to under 140 characters ⚠")
   } else {
     $.ajax("/tweets", {method: "POST", data: tweet})
     .then((response) => {
