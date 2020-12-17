@@ -6,8 +6,20 @@
 const escape = function(str) {
   let p = document.createElement('p')
   p.appendChild(document.createTextNode(str))
-  console.log(p.innerHTML)
   return p.innerHTML
+}
+
+// alert message which will come up above compose tweet - takes in parameter of error message to show
+const alertMessage = function(error) {
+  const div = document.createElement('div')
+  const p = document.createElement('p');
+  div.appendChild(p);
+  p.appendChild(document.createTextNode(error));
+  div.classList.add("error")
+  $('.new-tweet').prepend(div);
+  $("#tweet-text").on('keydown', function() {
+    $(".error").remove();
+  })
 }
 
 const createTweetElement = function(tweet) {
@@ -37,44 +49,44 @@ const createTweetElement = function(tweet) {
 const loadTweets = function() {
   $.ajax("/tweets", {method: "GET"})
   .then((response) => {
-    return renderTweets(response)
+    renderTweets(response)
   })
   .catch((error) => {
-    console.log("error")
+    alertMessage("Error loading tweets :(")
   })
 }
 
 const renderTweets = function(tweets) {
-  $("#tweets-container").empty()
+  $("#tweets-container").empty();
   for (const tweet of tweets) {
-    const $newTweet = createTweetElement(tweet)
+    const $newTweet = createTweetElement(tweet);
     $('#tweets-container').prepend($newTweet);
   }
 }
 
 const onSubmit = function(submit) {
-  submit.preventDefault()
-  const tweetContent = $(".new-tweet form textarea").val()
-  const tweet = $(".new-tweet form").serialize()
+  submit.preventDefault();
+  const tweetContent = $(".new-tweet form textarea").val();
+  const tweet = $(".new-tweet form").serialize();
   if (!tweetContent) {
-    alert("Please write your tweet first!")
+    alertMessage("⚠ Please write your tweet First ⚠")
   } else if (tweetContent.length > 140) {
-    alert("Tweet too long! Please shorten to under 140 characters")
+    alertMessage("⚠ Tweet too long! Please shorten to under 140 characters ⚠")
   } else {
     $.ajax("/tweets", {method: "POST", data: tweet})
     .then((response) => {
-      loadTweets() 
-      $(".new-tweet form textarea").val("")
-      $(".counter").val(140)
+      loadTweets() ;
+      $(".new-tweet form textarea").val("");
+      $(".counter").val(140);
     })
     .catch((error) => {
-      alert("Error Submitting Tweet")
+      alert("Error Submitting Tweet");
     })
   }
 }
 
 
 $(document).ready(function() {
-  $(".new-tweet form").on('submit', onSubmit)
-  loadTweets()
+  $(".new-tweet form").on('submit', onSubmit);
+  loadTweets();
 });
