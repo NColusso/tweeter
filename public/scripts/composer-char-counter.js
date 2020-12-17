@@ -7,7 +7,7 @@ const onChange = function(){
   const remaining = 140 - text.length;
   const parent = $(this).parent();
   const counter = parent.find(".counter")
-  counter.html(remaining);
+  counter.text(remaining);
   if (remaining < 0) {
     counter.addClass("color-warning");
   } else {
