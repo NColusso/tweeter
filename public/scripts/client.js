@@ -18,16 +18,16 @@ const createTweetElement = function(tweet) {
   const time = tweet.created_at;
   const $tweet = `
   <article>
-  <header>
-  <div>
-  <img src="${avatars}"><span class="name">${name}</span>
-  </div>
-  <span class="username">${handle}</span>
-  </header>
-  <p>${safeContent}</p>
-  <footer>
-  <span>${time}</span><span>f r h</span>
-  </footer>
+    <header>
+      <div>
+        <img src="${avatars}"><span class="name">${name}</span>
+      </div>
+      <span class="username">${handle}</span>
+    </header>
+    <p>${safeContent}</p>
+    <footer>
+      <span>${time}</span><span>f r h</span>
+    </footer>
   </article>
   `
   return $tweet;
@@ -37,7 +37,7 @@ const createTweetElement = function(tweet) {
 const loadTweets = function() {
   $.ajax("/tweets", {method: "GET"})
   .then((response) => {
-    renderTweets(response)
+    return renderTweets(response)
   })
   .catch((error) => {
     console.log("error")
@@ -45,7 +45,7 @@ const loadTweets = function() {
 }
 
 const renderTweets = function(tweets) {
-  // const orderedTweets = tweets.reverse()
+  $("#tweets-container").empty()
   for (const tweet of tweets) {
     const $newTweet = createTweetElement(tweet)
     $('#tweets-container').prepend($newTweet);
