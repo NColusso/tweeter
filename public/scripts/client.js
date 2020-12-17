@@ -3,11 +3,18 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-
+const escape = function(str) {
+  let p = document.createElement('p')
+  p.appendChild(document.createTextNode(str))
+  console.log(p.innerHTML)
+  return p.innerHTML
+}
 
 const createTweetElement = function(tweet) {
+  
   const { name, avatars, handle } = tweet.user
   const content = tweet.content.text;
+  const safeContent = escape(content)
   const time = tweet.created_at;
   const $tweet = `
   <article>
@@ -17,7 +24,7 @@ const createTweetElement = function(tweet) {
   </div>
   <span class="username">${handle}</span>
   </header>
-  <p>${content}</p>
+  <p>${safeContent}</p>
   <footer>
   <span>${time}</span><span>f r h</span>
   </footer>
@@ -56,6 +63,7 @@ const onSubmit = function(submit) {
   } else {
     $.ajax("/tweets", {method: "POST", data: tweet})
     .then((response) => {
+      loadTweets() 
       $(".new-tweet form textarea").val("")
       $(".counter").val(140)
     })
@@ -63,12 +71,10 @@ const onSubmit = function(submit) {
       alert("Error Submitting Tweet")
     })
   }
-  loadTweets()
 }
 
 
 $(document).ready(function() {
-  // renderTweets(data);
   $(".new-tweet form").on('submit', onSubmit)
   loadTweets()
 });
