@@ -60,3 +60,11 @@
 #tweets-container article img{
   opacity: 0.7;
 }
+
+.icons {
+  font-size: 0.6em;
+}
+
+#tweets-container article:hover .icons{
+  font-size: 0.8em;
+}

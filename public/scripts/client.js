@@ -15,9 +15,9 @@ const escape = function(str) {
 // will go away once user starts typing again
 const alertMessage = function(error) {
   const div = document.createElement('div')
-  const p = document.createElement('p');
-  div.appendChild(p);
-  p.appendChild(document.createTextNode(error));
+  const span = document.createElement('span');
+  div.appendChild(span);
+  span.appendChild(document.createTextNode(error));
   div.classList.add("error")
   $('.new-tweet').prepend(div);
   $("#tweet-text").on('keydown', function() {
@@ -41,7 +41,7 @@ const createTweetElement = function(tweet) {
     </header>
     <p>${safeContent}</p>
     <footer>
-      <span>${time}</span><span>f r h</span>
+      <span>${time}</span><span class="icons"> <i class="fas fa-flag"></i>  <i class="fas fa-retweet"></i>  <i class="fas fa-heart"></i> </span>
     </footer>
   </article>
   `
@@ -73,9 +73,9 @@ const onSubmit = function(submit) {
   const tweetContent = $(".new-tweet form textarea").val();
   const tweet = $(".new-tweet form").serialize();
   if (!tweetContent) {
-    alertMessage("⚠ Please write your tweet First ⚠")
+    alertMessage("Please write your tweet First!")
   } else if (tweetContent.length > 140) {
-    alertMessage("⚠ Please shorten to under 140 characters ⚠")
+    alertMessage("Please shorten to under 140 characters!")
   } else {
     $.ajax("/tweets", {method: "POST", data: tweet})
     .then((response) => {
