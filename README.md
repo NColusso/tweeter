@@ -1,8 +1,15 @@
 # Tweeter Project
 
-Tweeter is a simple, single-page Twitter clone.
+Tweeter is a simple, single-page AJAX-based Twitter clone that uses JQuery, HTML5 and CSS3.
 
-This repository is the starter code for the project: Students will fork and clone this repository, then build upon it to practice their HTML, CSS, JS, jQuery and AJAX front-end skills, and their Node, Express and MongoDB back-end skills.
+Features include:
+
+- A layout optimized for desktop, and one screens below 1024px (such as mobile or tablet)
+- Error messages pop up when tweet is empty or too long
+- Counter for number of characters left in tweet
+- When clicking arrow for "Write a new tweet" at top it will focus pointer into tweet text area
+- Will immediately post tweet below and show times of when tweets were posted
+- Visual effect on "hover" of existing tweets
 
 ## Getting Started
 
@@ -10,6 +17,11 @@ This repository is the starter code for the project: Students will fork and clon
 2. Install dependencies using the `npm install` command.
 3. Start the web server using the `npm run local` command. The app will be served at <http://localhost:8080/>.
 4. Go to <http://localhost:8080/> in your browser.
+
+## Getting Started
+!["Screenshot of 'desktop' layout"](https://github.com/NColusso/tweeter/blob/master/public/images/desktop.png?raw=true)
+!["Screenshot of 'mobile' layout"](https://github.com/NColusso/tweeter/blob/master/public/images/mobile.png?raw=true)
+!["Screenshot of hover effects"](https://github.com/NColusso/tweeter/blob/master/public/images/hover.png?raw=true)
 
 ## Dependencies
 
