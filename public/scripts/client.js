@@ -6,30 +6,30 @@
 
 //  helper function to create "safe" text that will not alter app
 const escape = function(str) {
-  let p = document.createElement('p')
-  p.appendChild(document.createTextNode(str))
-  return p.innerHTML
-}
+  let p = document.createElement('p');
+  p.appendChild(document.createTextNode(str));
+  return p.innerHTML;
+};
 
 // alert message which will come up above compose tweet - parameter of error message
 // will go away once user starts typing again
 const alertMessage = function(error) {
-  const div = document.createElement('div')
+  const div = document.createElement('div');
   const span = document.createElement('span');
   div.appendChild(span);
   span.appendChild(document.createTextNode(error));
-  div.classList.add("error")
+  div.classList.add("error");
   $('.new-tweet').prepend(div);
   $("#tweet-text").on('keydown', function() {
     $(".error").remove();
-  })
-}
+  });
+};
 
 const createTweetElement = function(tweet) {
   
-  const { name, avatars, handle } = tweet.user
+  const { name, avatars, handle } = tweet.user;
   const content = tweet.content.text;
-  const safeContent = escape(content)
+  const safeContent = escape(content);
   // npm moment use to find how long ago tweet was posted
   const time = moment(tweet.created_at).fromNow();
   const $tweet = `
@@ -45,19 +45,19 @@ const createTweetElement = function(tweet) {
       <span>${time}</span><span class="icons"> <i class="fas fa-flag"></i>  <i class="fas fa-retweet"></i>  <i class="fas fa-heart"></i> </span>
     </footer>
   </article>
-  `
+  `;
   return $tweet; 
-}
+};
 
 const loadTweets = function() {
   $.ajax("/tweets", {method: "GET"})
   .then((response) => {
-    renderTweets(response)
+    renderTweets(response);
   })
   .catch((error) => {
-    alertMessage("Error loading tweets. Try again later")
-  })
-}
+    alertMessage("Error loading tweets. Try again later");
+  });
+};
 
 const renderTweets = function(tweets) {
   // clear tweet container first to not have them show 2x
@@ -66,16 +66,16 @@ const renderTweets = function(tweets) {
     const $newTweet = createTweetElement(tweet);
     $('#tweets-container').prepend($newTweet);
   }
-}
+};
 
 const onSubmit = function(submit) {
   submit.preventDefault();
   const tweetContent = $(".new-tweet form textarea").val();
   const tweet = $(".new-tweet form").serialize();
   if (!tweetContent) {
-    alertMessage("Please write your tweet First!")
+    alertMessage("Please write your tweet First!");
   } else if (tweetContent.length > 140) {
-    alertMessage("Please shorten to under 140 characters!")
+    alertMessage("Please shorten to under 140 characters!");
   } else {
     $.ajax("/tweets", {method: "POST", data: tweet})
     .then((response) => {
@@ -85,14 +85,14 @@ const onSubmit = function(submit) {
     })
     .catch((error) => {
       alert("Error Submitting Tweet");
-    })
+    });
   }
-}
+};
 
 $(document).ready(function() {
   $(".new-tweet form").on('submit', onSubmit);
   loadTweets();
   $("#chevron").on("click", function() {
-    $("#tweet-text").focus()
-  })
+    $("#tweet-text").focus();
+  });
 });
