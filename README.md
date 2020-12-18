@@ -18,9 +18,18 @@ Features include:
 3. Start the web server using the `npm run local` command. The app will be served at <http://localhost:8080/>.
 4. Go to <http://localhost:8080/> in your browser.
 
-## Getting Started
+## Screenshots
+
+### Desktop Layout
+
 !["Screenshot of 'desktop' layout"](https://github.com/NColusso/tweeter/blob/master/public/images/desktop.png?raw=true)
+
+### Mobile Layout
+
 !["Screenshot of 'mobile' layout"](https://github.com/NColusso/tweeter/blob/master/public/images/mobile.png?raw=true)
+
+### Hover effects
+
 !["Screenshot of hover effects"](https://github.com/NColusso/tweeter/blob/master/public/images/hover.png?raw=true)
 
 ## Dependencies
