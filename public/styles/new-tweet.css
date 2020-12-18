@@ -4,7 +4,6 @@
   margin-bottom: 5%;
 }
 
-
 #tweet-text {
   display: flex;
   align-items: center;
@@ -56,10 +55,6 @@ button {
   margin: 20px 40px
 }
 
-.new-tweet div.noError{
-  display: none;
-}
-
 main {
   display:flex;
   flex-direction: column;
@@ -72,6 +67,8 @@ main {
 .counter {
   font-weight: bold;
 }
+
+/* Below desktop size changes */
 
 @media only screen and (max-width: 1023px) {
   main {

@@ -16,38 +16,12 @@ header img {
   margin-top: 1em;
 }
 
-.write-new{
-  display: flex;
-  flex-direction: column;
-}
-
-#chevron {
-  margin-right: 110px;
-  color: red;
-  animation: MoveUpDown 1s linear infinite;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
+/* Below desktop size changes */
 
 @media only screen and (max-width: 1023px) {
   header.main {
     width: 100vw;
     position: relative;
     margin: 80px 0px 30px 0px
-  }
-  #chevron {
-    color: #4056A1;
-  }
-}
-
-
-
-@keyframes MoveUpDown {
-  0%, 100% {
-    bottom: 0;
-  }
-  50% {
-    bottom: 15px;
   }
 }

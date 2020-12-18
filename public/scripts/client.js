@@ -30,7 +30,8 @@ const createTweetElement = function(tweet) {
   const { name, avatars, handle } = tweet.user
   const content = tweet.content.text;
   const safeContent = escape(content)
-  const time = tweet.created_at;
+  // npm moment use to find how long ago tweet was posted
+  const time = moment(tweet.created_at).fromNow();
   const $tweet = `
   <article>
     <header>
@@ -45,8 +46,7 @@ const createTweetElement = function(tweet) {
     </footer>
   </article>
   `
-  return $tweet;
-  
+  return $tweet; 
 }
 
 const loadTweets = function() {
@@ -55,7 +55,7 @@ const loadTweets = function() {
     renderTweets(response)
   })
   .catch((error) => {
-    alertMessage("Error loading tweets :(")
+    alertMessage("Error loading tweets. Try again later")
   })
 }
 
@@ -89,8 +89,10 @@ const onSubmit = function(submit) {
   }
 }
 
-
 $(document).ready(function() {
   $(".new-tweet form").on('submit', onSubmit);
   loadTweets();
+  $("#chevron").on("click", function() {
+    $("#tweet-text").focus()
+  })
 });
