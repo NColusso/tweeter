@@ -1,14 +1,13 @@
-#tweets-container article header{
+#tweets-container article header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 95%;
 }
 
-#tweets-container article header div{
+#tweets-container article header div {
   display: flex;
   align-items: center;
- 
 }
 
 #tweets-container article footer {
@@ -31,7 +30,7 @@
 #tweets-container article p {
   margin: auto;
   width: 95%;
-  padding: 1%
+  padding: 1%;
 }
 
 #tweets-container article:hover {
@@ -39,25 +38,23 @@
   font-weight: 550;
 }
 
-#tweets-container article header .username{
-  color: rgba(84, 81, 73, 0)
- 
+#tweets-container article header .username {
+  color: rgba(84, 81, 73, 0);
 }
 
-#tweets-container article header img{
+#tweets-container article header img {
   margin: 10px;
- 
 }
 
-#tweets-container article:hover .username{
+#tweets-container article:hover .username {
   color: rgba(84, 81, 73, 0.5);
 }
 
-#tweets-container article:hover img{
+#tweets-container article:hover img {
   opacity: 1;
 }
 
-#tweets-container article img{
+#tweets-container article img {
   opacity: 0.7;
 }
 
@@ -65,6 +62,6 @@
   font-size: 0.6em;
 }
 
-#tweets-container article:hover .icons{
+#tweets-container article:hover .icons {
   font-size: 0.8em;
 }
